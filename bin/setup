@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+  echo "You must pass an environment name that is defined in config.json"
+  exit 1
+fi
+
+config_value () {
+  config_key=$1
+  cat ./config.json | jq ".$environment.$config_key" -r
+}
+
+whitespace_to_newlines () {
+  read output
+  echo $output | sed 's/[^a-zA-Z0-9\-_]/\'$'\n/g'
+}
+
+environment=$1
+stack_name=`config_value "stack_name"`
+iam_profile=`config_value "iam_profile"`

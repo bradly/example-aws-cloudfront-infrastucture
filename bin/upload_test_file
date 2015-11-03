@@ -1,0 +1,16 @@
+#!/bin/bash
+
+source bin/setup
+
+bucket_name=`bin/outputs $environment S3BucketName`
+file_name=/$TMPDIR/$environment
+
+echo $environment > $file_name
+date +%Y-%m-%d-%H-%M-%S >> $file_name
+
+aws s3api put-object \
+  --key $environment \
+  --bucket $bucket_name \
+  --body $file_name \
+  --profile $iam_profile \
+  --content-type text/plain

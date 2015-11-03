@@ -1,0 +1,6 @@
+{
+  "qa" : {
+    "stack_name"     : "your-stack-name",
+    "iam_profile"    : "your-aws-iam-profile-name"
+  }
+}

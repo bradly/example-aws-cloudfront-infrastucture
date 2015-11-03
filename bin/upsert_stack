@@ -1,0 +1,21 @@
+#!/bin/bash
+
+source bin/setup
+
+aws cloudformation describe-stacks --stack-name $stack_name --profile $iam_profile > /dev/null
+
+if [ $? -eq 0 ]; then
+  operation=update
+else
+  operation=create
+fi
+
+template_file_path=`pwd`/distribution_stack.json
+ssl_cert_id=`config_value "ssl_cert_id"`
+domain=`config_value "domain"`
+
+aws cloudformation $operation-stack \
+  --stack-name $stack_name \
+  --template-body file://$template_file_path \
+  --profile $iam_profile \
+  --capabilities CAPABILITY_IAM
