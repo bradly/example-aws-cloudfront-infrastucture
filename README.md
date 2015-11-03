@@ -34,4 +34,4 @@ To upload a test file to your distribution run
 `./bin/upload_test_file your_env`
 
 ### Getting Help
-If you need help or have questions please open a pull request [here](https://github.com/bradly/xxx/issues/new).
+If you need help or have questions please open a pull request [here](https://github.com/bradly/example-aws-cloudfront-infrastucture/issues/new).
