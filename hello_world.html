@@ -1,0 +1,14 @@
+<html>
+<head><title>Hello</title></head>
+<body></body>
+<script>
+  if (window.location.search != '') {
+    name = window.location.search.split("=")[1]
+  } else {
+    name = 'World'
+  }
+
+  message = 'Hello, ' + name + '!';
+  document.write(message);
+</script>
+</html>

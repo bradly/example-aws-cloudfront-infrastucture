@@ -3,7 +3,7 @@
 source bin/setup
 
 output_key=$2
-base_command="aws cloudformation describe-stacks --stack-name $stack_name --output text --profile $iam_profile"
+base_command="aws cloudformation describe-stacks --stack-name $stack_name --output text --region $region --profile $profile"
 
 if [ $# -ne 2 ]; then
   eval "$base_command --query \"Stacks[0].Outputs[*].OutputKey\" | whitespace_to_newlines | sort"

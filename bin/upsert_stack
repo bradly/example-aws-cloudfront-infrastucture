@@ -2,7 +2,7 @@
 
 source bin/setup
 
-aws cloudformation describe-stacks --stack-name $stack_name --profile $iam_profile > /dev/null
+aws cloudformation describe-stacks --stack-name $stack_name --region $region --profile $profile > /dev/null
 
 if [ $? -eq 0 ]; then
   operation=update
@@ -17,5 +17,6 @@ domain=`config_value "domain"`
 aws cloudformation $operation-stack \
   --stack-name $stack_name \
   --template-body file://$template_file_path \
-  --profile $iam_profile \
+  --profile $profile \
+  --region $region \
   --capabilities CAPABILITY_IAM

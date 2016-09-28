@@ -17,4 +17,5 @@ whitespace_to_newlines () {
 
 environment=$1
 stack_name=`config_value "stack_name"`
-iam_profile=`config_value "iam_profile"`
+profile=`config_value "profile"`
+region=`config_value "region"`
